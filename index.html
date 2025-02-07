@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(...um poema, um café...) volume 1</title>
+    <style>
+        /* Importando a fonte 'Special Elite' do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+        /* Estilos gerais */
+        body {
+            font-family: 'Special Elite', 'Courier New', Courier, monospace;
+            background-color: #f9f9f9;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' fill='%23f9f9f9'/%3E%3Cpath d='M0 0L20 20M20 0L0 20' stroke='%23e0e0e0' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
+        /* Container principal */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            padding: 25px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        /* Título principal */
+        .title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* Capa do livro */
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            width: 250px; /* Aumento do tamanho da capa */
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+            display: block;
+            margin: auto;
+        }
+
+        .book-cover img:hover {
+            transform: scale(1.08);
+        }
+
+        /* Modal para exibição da capa expandida */
+        .modal {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            opacity: 1;
+            display: flex;
+        }
+
+        .modal-content {
+            width: auto;
+            height: auto;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Notas do autor */
+        .author-notes {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #ccc;
+        }
+
+        .author-notes-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .author-notes-content {
+            text-align: justify;
+            font-size: 1.1em;
+        }
+
+        /* Estilo dos poemas */
+        .poem {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 5px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .poem-title {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: capitalize;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .poem-author {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-style: italic;
+            color: #555555;
+        }
+
+        .poem-content {
+            white-space: pre-wrap;
+            line-height: 1.8;
+            text-align: justify;
+            font-size: 1.1em;
+            padding-left: 15px;
+            border-left: 3px solid #ccc;
+        }
+
+        /* Rodapé */
+        .footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #777777;
+            margin-top: 50px;
+            border-top: 1px solid #dddddd;
+            padding-top: 15px;
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">(...um poema, um café...)<br>volume 1</div>
+
+        <!-- Capa do Livro -->
+        <div class="book-cover">
+            <img id="bookImage" src="https://i.ibb.co/gMDpTY4b/um-poema-um-caf-volume-1.png" alt="Capa do Livro">
+        </div>
+
+        <!-- Modal para exibir a capa expandida -->
+        <div id="imageModal" class="modal">
+            <span class="close-modal">&times;</span>
+            <img class="modal-content" id="modalImg">
+        </div>
+
+        <!-- Notas do Autor -->
+        <div class="author-notes">
+            <div class="author-notes-title">Notas do Autor</div>
+            <div class="author-notes-content">A ideia deste livro nasceu no ano 2000, época em que descobri os encantos do estudo pela literatura e encontrei na escrita um espaço acolhedor, que foi meu abrigo, meu refúgio e minha alucinação por muito tempo. O “eu” – Ravell – que existia nessa época, hoje é apenas um eco distante, gritando e clamando pela atenção do meu “eu” presente. Meu maior desafio, ao revisitar tantos textos e escritos poéticos desse período, é encontrar esse fio condutor do que um dia fui: minha essência, meus sentimentos, minha arte, minha poesia.</div>
+            <br>
+            <div class="author-notes-content">Por que ...um poema, um café... ?<br><br>Esse título surgiu durante as madrugadas em que passava escrevendo. Nada como uma xícara de café fumegante para renovar o ânimo e acompanhar a leitura e a escrita de tantos sentimentos, paixões, reflexões e questionamentos.</div>
+            <br>
+            <div class="author-notes-content">Todos os poemas foram escritos predominantemente entre 2000 e 2004.</div>
+        </div>
+
+       <!-- Poema 1 -->
+<div class="poem">
+    <div class="poem-title">Pseudônimos</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Meu nome é Pablo Neruda, é Vinícius de Moraes,<br>
+        É Bocage, Victor Hugo, o meu nome é Baudelaire.<br>
+        Meu nome é Ariano Suassuna, é João Cabral de Melo Neto,<br>
+        Ferreira Gullar, José Saramago, o meu nome é Gabriel García Márquez.<br><br>
+
+        Meu nome é Mário Quintana, é Carlos Drummond de Andrade,<br>
+        É Augusto dos Anjos, Olavo Bilac, Cruz e Souza.<br>
+        O meu nome é Castro Alves e Machado de Assis,<br>
+        Me chamam de Álvares de Azevedo, Gonçalves Dias,<br>
+        Gregório de Matos Guerra, Menotti Del Picchia,<br>
+        Oswald de Andrade e Manuel Bandeira.<br><br>
+
+        Sim, meus amigos, já fui Gil Vicente,<br>
+        Luiz Vaz de Camões e William Shakespeare,<br>
+        Além disso, fui Mário de Andrade, Juó Bananére,<br>
+        Manoel de Barros, Haroldo de Campos, Carlos Nejar,<br>
+        Nelson Ascher e Paulo Leminski.<br><br>
+
+        Também respondi por Sousândrade, Tomás Antônio Gonzaga,<br>
+        Fernando Pessoa, Lord Byron, Gustave Flaubert,<br>
+        Kafka, Maiakovski, Dostoievski,<br>
+        Antero de Quental, Eça de Queirós e Aluísio Azevedo.<br><br>
+
+        Me apelidaram de Raimundo Correia, Eugênio de Castro,<br>
+        Alphonsus Guimarães, Monteiro Lobato, Lima Barreto,<br>
+        Euclides da Cunha, Alcântara Machado, Graciliano Ramos,<br>
+        Jorge Amado, Érico Veríssimo, Décio Pignatari,<br>
+        Rubem Braga, Fernando Sabino, José de Alencar e Nelson Rodrigues.<br><br>
+
+        Já assinei sendo Gilberto Passos Gil Moreira,<br>
+        Caetano Emanuel Viana Teles Veloso.<br>
+        Assinei sendo Francisco Buarque de Holanda<br>
+        E como Luis Gonzaga do Nascimento Jr.<br>
+        Vivi intensamente todos e mais alguns poetas e escritores aqui presentes.<br>
+        Mas encerro o poema sob minha identidade ainda não conhecida, Ravell.
+    </div>
+</div>
+
+<!-- Poema 2 -->
+<div class="poem">
+    <div class="poem-title">Minha Poesia</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        A poesia não me cabe,<br>
+        Compele-me em sua estratosfera pensativa.<br>
+        Me remete a um estado,<br>
+        Que interessantemente aos poucos<br>
+        Vai sendo descoberto e degustado.<br><br>
+
+        A poesia se desperta em mim,<br>
+        Entre linhas e estrofes.<br>
+        Conheço um mundo diferente,<br>
+        Viajo em cada palavra,<br>
+        Em cada pensamento.<br><br>
+
+        Expressões contidas em meus versos,<br>
+        Revelam a mais pura verdade.<br>
+        Sentimentalista ou não,<br>
+        Realista e questionativa,<br>
+        Eis a “pureza” de minha obra.<br><br>
+
+        Sempre penso e sonho e escrevo.<br>
+        Choro, emociono-me.<br>
+        Não há como não sentir a dor do que está sendo escrito.<br>
+        A poesia não mente.<br>
+        Não há como ludibriar quem a lê.
+    </div>
+</div>
+
+<!-- Poema 3 -->
+<div class="poem">
+    <div class="poem-title">Misteriosa</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Divinamente um ser superior,<br>
+        Que oculta toda sua beleza,<br>
+        Nos mais singelos atos do dia-a-dia,<br>
+        Revelando a simplicidade na maneira de agir.<br><br>
+
+        Sensitivelmente desabrochando,<br>
+        O verdadeiro sabor da poesia lírico-amorosa,<br>
+        Eclodida num mar de palavras,<br>
+        Claras, sinceras e expressivas,<br>
+        Contidas num único lugar escuro e obscuro,<br>
+        Que interessantemente aos poucos<br>
+        Vai sendo descoberto.<br><br>
+
+        Maravilhosamente única,<br>
+        Como uma pétala de rosa,<br>
+        Que floresce a cada primavera,<br>
+        Conseguindo renovar seu ânimo,<br>
+        Em busca de novos caminhos e horizontes.<br><br>
+
+        Eternamente linda,<br>
+        Como se sua beleza jamais fosse tocada por algum ser,<br>
+        Guardada, reservada como se escondesse,<br>
+        O mais forte e bem guardado dos segredos.<br><br>
+
+        Encantadoramente misteriosa,<br>
+        Como o véu que cobre o rosto de uma noiva,<br>
+        Ocultando assim,<br>
+        O mais cobiçado e procurado dos desejos.<br><br>
+
+        Eternamente, misteriosamente,<br>
+        A mais doce das criaturas que já conheci.
+    </div>
+</div>
+
+<!-- Poema 4 -->
+<div class="poem">
+    <div class="poem-title">Ainda que me lembre de você</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Ainda que eu te queira não és mais aquela mulher com que sempre sonhei.<br>
+        Com o tempo sua essência mudou e o seu gosto ficou fortemente amargo.<br>
+        Acabaste com os sonhos, com as alegrias, com a beleza e com o encanto.<br>
+        De minha pessoa pouco guardaste, na memória lembranças indesejáveis.<br>
+        Sepultaste um sentimento puro, cristalino e difícil de se encontrar por aí.<br>
+        Não respeitaste o sofrimento alheio e zombaste até onde podes de mim.<br>
+        Não correspondesse aos meus desejos<br>
+        E me abandonasse quando mais precisava:<br>
+        Dos seus carinhos, de sua presença, do seu cheiro e das suas palavras.<br><br>
+
+        A sinceridade não faz parte do seu vocabulário e nunca fará, tenho certeza.<br>
+        As únicas coisas que me ofereceste: o descaso, a humilhação e o desamor.<br>
+        Acho que não preciso de nada que ofereceste à minha pessoa.<br>
+        Não sei por que ainda chamo pelo teu nome e anseio sua volta.<br>
+        Mas basta, agora quero ser feliz – Não preciso mais de sua companhia.<br>
+        Pelo menos por esse momento não me fazes falta alguma.<br><br>
+
+        Você me serviu apenas como tema para compor mais um poema em meu acervo.<br>
+        Quem dera que fosse sempre assim, todavia, por vezes ainda choro por ti.<br>
+        Ainda me escondo por trás das sombras do teu nome e vagueio pela escuridão,<br>
+        Em busca de uma resposta que certamente nunca virá.
+    </div>
+</div>
+
+<!-- Poema 5 -->
+<div class="poem">
+    <div class="poem-title">A vida pede passagem</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Por amigos e inimigos,<br>
+        Fez-se a vida como está.<br>
+        De favores e retribuições,<br>
+        De tudo ou mais devo brindar.<br><br>
+
+        Do muito ou pouco,<br>
+        Quero mais é desfrutar.<br>
+        Do complexo ao mais simples,<br>
+        Tenho eu que conquistar.<br><br>
+
+        Pelas coisas que observo,<br>
+        Tenho um brilho em meu olhar,<br>
+        Que cativa e me anima,<br>
+        Sem medo do que virá.<br><br>
+
+        Devo me conquistar,<br>
+        Devo me consolar,<br>
+        E entender cada palmo do meu chão,<br>
+        Que a vida ainda há de revelar.
+    </div>
+</div>
+
+<!-- Poema 6 -->
+<div class="poem">
+    <div class="poem-title">Dos Beijos Que Roubei</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        (...) E dos seus lábios roubei-lhe o beijo,<br>
+        Mortal e imortal, terminantemente devasso.<br>
+        O beijo que acaricia-me como as acácias,<br>
+        Em meio ao orvalho que escoa sobre a madrugada.<br><br>
+
+        Aos poucos vou me deixando tomar conta,<br>
+        Por essas sentimentalidades que me aflora.<br>
+        Em sua pessoa me guardo como um segredo,<br>
+        Vitalício, proibido de se revelar.<br><br>
+
+        De sua presença faço a minha.<br>
+        De suas palavras construo os caminhos do amanhã.<br>
+        Com sua experiência profetizo a existência,<br>
+        Do meu ser inacabado.<br><br>
+
+        Sem nexo me declaro:<br>
+        Dependente incondicional do seu amor.<br>
+        Uma neurose que me acaba,<br>
+        Sem deixar rastros ou seqüelas vivenciadas.<br><br>
+
+        Para sempre ocultado o nosso amor,<br>
+        Trancado a sete chaves perdidas.<br>
+        Nossas vidas aparentemente já vividas,<br>
+        Em volta a esse amor.<br><br>
+
+        Que dos beijos falei,<br>
+        E o nosso amor sonhei,<br>
+        Todos em vão.<br>
+        Caminhos indiferentes transformados em ilusão.
+    </div>
+</div>
+
+<!-- Poema 7 -->
+<div class="poem">
+    <div class="poem-title">Flash Back</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Ao contrário do seu corpo, tive por um instante seu sorriso em minhas mãos.<br>
+        Tive a certeza de que fui o homem mais feliz do mundo,<br>
+        Ao menos nesse momento.<br>
+        Ao invés dos seus lábios o que possuí foi a incerteza do seu amor.<br>
+        Tive por um segundo, apenas um segundo, a insegurança de sua presença.<br>
+        Me fiz mais uma vez escravo de todo um sentimento inexistente.<br>
+        Tive o seu cheiro impregnando o meu ser<br>
+        E suas palavras a soar em meus ouvidos.<br><br>
+
+        Não pude deixar passar a vontade de gritar<br>
+        E gritar pelo seu nome ansiando sua volta.<br>
+        Pudera me fazer em mil poemas pra te expressar o que sinto.<br>
+        Cada fragmento meu contém um pedacinho de você.<br>
+        Em cada pensamento rouba-me infinitas lembranças e desejos,<br>
+        Os quais, não sei por que, ainda guardo dentro de mim.<br><br>
+
+        Mais que tudo roubaste minha paz e tranquilidade.<br>
+        Já não sou o que era nem o que pretendia ser.<br>
+        Sinto, mas tenho que te dizer a verdade.
+    </div>
+</div>
+
+<!-- Poema 8 -->
+<div class="poem">
+    <div class="poem-title">Força Oculta</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Existe uma força que me prende à solidão,<br>
+        Me afastando das pessoas,<br>
+        Me deixando sempre à margem,<br>
+        Expondo minhas fraquezas,<br>
+        Para aqueles que só querem o meu mal.<br><br>
+
+        Existe uma força que me impede de ser feliz,<br>
+        Que se apodera dos meus sentimentos,<br>
+        Me consumindo impiedosamente,<br>
+        Distorcendo o amor que existe em mim.<br><br>
+
+        Existe uma força perigosa e corrosiva,<br>
+        Que me atrai aos piores pesadelos,<br>
+        Que desafia o meu medo,<br>
+        E ridiculariza o meu ser.<br><br>
+
+        Existe essa força em mim,<br>
+        Que desencoraja, que afasta,<br>
+        Que expõe, que se apodera,<br>
+        Que amedronta, que atrai,<br>
+        Que distorce, que desafia,<br>
+        E ridiculariza aquilo que sou,<br>
+        Me prendendo no cárcere obscuro,<br>
+        Criado em torno da minha existência.
+    </div>
+</div>
+
+<!-- Poema 9 -->
+<div class="poem">
+    <div class="poem-title">Louquífera Enfermidade Pensativa</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Letras, letras, palavras e papéis.<br>
+        Do lápis à caneta, frases imperfeitas.<br>
+        Pensamentos distorcidos,<br>
+        Criação processual,<br>
+        Ideologias concretas,<br>
+        Em sua forma original.<br><br>
+
+        O louco poeta louco,<br>
+        Alucinado pela lógica,<br>
+        Metricamente incorreto,<br>
+        Gramaticalmente adulterado.<br>
+        Sem nexo escreve seus versos,<br>
+        Sextilhas incompletas,<br>
+        Decassílabos inacabados,<br>
+        Sonetos desfigurados.<br><br>
+
+        Apostando em sua concepção,<br>
+        Complementada por ilusões centralizadas,<br>
+        Descentralizando o sentido da arte,<br>
+        Favorecendo as suas expectativas.<br><br>
+
+        Inconsequentemente desprovido<br>
+        Do mal que o assola,<br>
+        Da doença incurável que carrega,<br>
+        Amargando os sonhos louquíferos,<br>
+        Desmanchados em realidade.<br><br>
+
+        Enfermidade pensativa,<br>
+        Neurose da intelectualidade,<br>
+        Achando-se:<br>
+        Corretamente perfeito em tudo<br>
+        O que pensa e realiza.<br><br>
+
+        Deve ser obrigatoriamente<br>
+        Imposto de qualquer maneira,<br>
+        Em qualquer pensamento,<br>
+        Tirando esse direito dos outros.<br><br>
+
+        Sendo dono de suas próprias palavras,<br>
+        E desejando cada vez mais o conhecimento alheio,<br>
+        Acaba se decompondo perante a sociedade,<br>
+        Vítima do seu próprio conhecimento.<br><br>
+
+        <em>“Aos burros a intelectualidade, aos inteligentes a alienação.”</em>
+    </div>
+</div>
+
+<!-- Poema 10 -->
+<div class="poem">
+    <div class="poem-title">Vamos ver a arte</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Vamos ver a arte em sua forma mais bruta,<br>
+        Em sua forma concreta deleitar-se aos límpidos prazeres.<br>
+        Indagar o mais súbito sentimento despertado,<br>
+        Reverenciando esse mais alto cume de explicações.<br><br>
+
+        Vamos ver a arte viajar por entre corpos,<br>
+        Derramar-se em sua forma mais rústica.<br>
+        Tomar um banho de palavras idiomáticas,<br>
+        Saborear seu mais simples desejo.<br><br>
+
+        Vamos ver a arte surgindo entre pensamentos,<br>
+        Nascendo por entre veredas jamais caminhadas,<br>
+        Rompendo essas estruturas medíocres que nos cerca.<br><br>
+
+        Vamos ver a arte voltada para o mundo,<br>
+        E deixar de lado essa alienação que nos toma.<br>
+        Olhando-a pelo simples prazer de tê-la,<br>
+        E degustá-la como nunca a consumimos.<br><br>
+
+        Vamos ver a arte... Sim... Vamos ver...<br>
+        Um fluxo brilhante e viscoso que brota de uma pintura.<br>
+        Uma escultura denuncia os maus tratos por ela.<br>
+        Umas palavras expressam a fúria de uma nação.<br>
+        Ideologias carregadas de latrocínios ficam pra trás.<br>
+        Mudança à vista e a prazo aos olhos da sociedade.<br><br>
+
+        Admirações telepáticas em sumo do contexto,<br>
+        Apresentado, explícito, desvirginado,<br>
+        Aos olhos, sentimentos, expressões, coração.
+    </div>
+</div>
+
+<!-- Poema 11 -->
+<div class="poem">
+    <div class="poem-title">Ode à um Amor Infinito</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Estrela cadente que ilumina o meu céu,<br>
+        Luz sublime que aquece o meu ser.<br>
+        Imensidão... Paixão infinita... Sereia misteriosa que navega em meu mar.<br>
+        Tenho medo de te perder, mesmo que seja apenas por um segundo.<br>
+        Aroma envolvente que desperta paixão,<br>
+        Rosa magnífica que perfuma meus campos, não importa o que aconteça,<br>
+        Cairei sempre em teus braços.<br>
+        Imponente beleza que ofusca meus olhos,<br>
+        Alimentando o coração de glória, alegria e esplendor.<br><br>
+
+        Tenho certeza de que, mesmo em sua ausência,<br>
+        Estarei sempre ao teu lado.<br><br>
+
+        Ainda que se formem barreiras em torno de nós,<br>
+        Mesmo que não consiga compreender a força do que sinto,<br>
+        O que mais quero pra mim é simplesmente você: Minha deusa do amor!<br>
+    </div>
+</div>
+
+<!-- Poema 12 -->
+<div class="poem">
+    <div class="poem-title">De tudo foi em vão</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        De tanto amor já lhe falei,<br>
+        Mas parece que tudo foi em vão.<br>
+        Nada ficou marcado na inconsciência do seu ser,<br>
+        Enquanto o meu vive a pairar sobre terras alheias,<br>
+        Ocasionando lembranças contínuas e indesejadas.<br><br>
+
+        Longe já se vai minha esperança<br>
+        De te ver deleitando-se<br>
+        Sobre a poesia em sua forma mais bruta de sentimentos,<br>
+        Ainda não lapidados pelo sofrimento e pela angústia,<br>
+        De todo esse carma,<br>
+        Sagas intermináveis perante o nosso amor.<br><br>
+
+        Embaraçosamente guardo a ideia de sua incompreensão,<br>
+        Amorosa, sensitiva e tantas outras,<br>
+        Mas possivelmente ainda não revelada<br>
+        Devido ao seu estilo de ser,<br>
+        Cuidadosamente descuidada<br>
+        Nos referentes ensinamentos da vida.<br><br>
+
+        É caminhando assim que vais<br>
+        Cada vez mais longe de todos nós,<br>
+        Pois dessa forma impedes a ti<br>
+        De ver o futuro em tua frente,<br>
+        Jogando todo esse amor objetivo e subjetivo<br>
+        Em meio a esse árduo fogo em brasa.
+    </div>
+</div>
+
+<!-- Poema 13 -->
+<div class="poem">
+    <div class="poem-title">Um Segundo</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Em um segundo vi seu rosto nas estrelas,<br>
+        Ele parecia aflito em busca de uma resposta.<br>
+        Uma resposta que nem mesmo o tempo,<br>
+        Nem a vida em si poderia revelar.<br><br>
+
+        Em um segundo senti seus beijos caindo do céu,<br>
+        Como cataratas e gotas de orvalho,<br>
+        Que deslancha por sobre o meu corpo,<br>
+        Inspirando minha poesia.<br><br>
+
+        Em um segundo, um segundo só,<br>
+        Tomei posse de tudo que foi marcante em minha vida.<br>
+        Lembrei de fatos que se apagaram durante anos,<br>
+        E mais uma vez esqueci de mim.<br><br>
+
+        Em um segundo pensei em você,<br>
+        Fiz as pazes comigo, tomei o resto como “superficial”.<br>
+        Em um segundo, o meu segundo,<br>
+        Dei o último suspiro e morri lentamente,<br>
+        Caindo em desespero nos teus lindos e acolhedores braços.
+    </div>
+</div>
+
+<!-- Poema 14 -->
+<div class="poem">
+    <div class="poem-title">Saudades</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Ontem sonhei que finalmente havia te reencontrado.<br>
+        Nos abraçamos por um longo tempo,<br>
+        E ficamos trocando olhares e palavras de amor.<br>
+        Senti que a história estava se repetindo,<br>
+        Tudo se parecia como na primeira vez.<br><br>
+
+        As mesmas expressões, os mesmos gestos,<br>
+        As mesmas carícias e o mesmo afeto.<br>
+        Lágrimas me escorriam aos olhos,<br>
+        Um sorriso exuberante apontou em meu rosto.<br>
+        Não podíamos conter a alegria que nos tomava.<br><br>
+
+        Você me olhou daquele jeito que nunca esqueci,<br>
+        Tocou-me como nunca havia tocado outro ser,<br>
+        E sentiu junto a mim as múltiplas facetas<br>
+        Do amor mais puro que jamais havíamos provado.<br><br>
+
+        Eu te acariciava as costas,<br>
+        Seminua pela blusa que usavas,<br>
+        E te apertava lentamente contra o meu corpo,<br>
+        Trêmulo de emoção,<br>
+        Enquanto sentia seu doce cheiro adentrando minhas narinas,<br>
+        Fazendo-me lembrar o quanto fomos felizes outrora.<br><br>
+
+        Mas meu sonho se propagou muito mais do que deveria,<br>
+        Além das barreiras sensoriais,<br>
+        Além da metafísica,<br>
+        E do universo em que vivemos.<br><br>
+
+        Acordei sentindo um grande vazio dentro de mim.<br>
+        Coração apertado, choro preso, quase sem voz.<br>
+        Ainda suspirava ao pensar no que indiretamente vivi,<br>
+        Mas consegui guardar um pouquinho deste sonho<br>
+        Em forma de poesia.
+    </div>
+</div>
+
+<!-- Poema 15 -->
+<div class="poem">
+    <div class="poem-title">Soneto Melancólico</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Ontem me lembrei de você!<br>
+        Bebi em sua homenagem,<br>
+        Li seu poema preferido,<br>
+        Escutei sua canção predileta.<br><br>
+
+        Ontem me lembrei de você!<br>
+        Chorei sua ausência,<br>
+        Celebrei sua imagem em minha mente,<br>
+        E me entreguei de corpo e alma ao que representas pra mim.<br><br>
+
+        Ontem, por um momento, me lembrei de você!<br>
+        Senti, pela primeira vez, sua importância em minha vida,<br>
+        E entendi que tens um significado especial pra mim.<br><br>
+
+        Ontem, por um instante, me lembrei de você!<br>
+        Tentei eternizar esse momento mais que tudo,<br>
+        Te guardando carinhosamente dentro do meu coração.
+    </div>
+</div>
+
+<!-- Poema 16 -->
+<div class="poem">
+    <div class="poem-title">Quem somos?</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Somos muitos em apenas um.<br>
+        Quantos somos dentro de nossas cabeças?<br>
+        Somos poucos, somos muitos!<br>
+        Somos poucos e muitos em apenas um.<br><br>
+
+        Somos nós... Não somos ninguém...<br>
+        Somos alguém em busca de uma verdade.<br>
+        Somos o que somos e o que fazemos.<br>
+        Somos o que queremos e o que pensamos ser.<br><br>
+
+        Somos o limite entre a genialidade e a burrice!<br>
+        Entre o destino e o acaso inevitável.<br>
+        Somos o pouco... Somos o muito.<br>
+        Somos seres complexos, sem nexo, sem filosofia definida.<br><br>
+
+        Não somos o que aparentamos, nem o que deveríamos parecer!<br>
+        Estamos confinados a uma realidade maquiada,<br>
+        A uma falsa estrutura moral.<br><br>
+
+        Temos o mal da ganância e da corrupção correndo em nossas veias.<br>
+        Às vezes esquecemos nossos valores por tão pouco...<br>
+        Afinal: somos vários em tantos momentos,<br>
+        Que até parece que não somos ninguém.
+    </div>
+</div>
+
+<!-- Poema 17 -->
+<div class="poem">
+    <div class="poem-title">Possessão</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Quero ir além das palavras, sentimentos, desejos e prazeres.<br>
+        Quero estar nas entrelinhas do teu corpo e de tua história de vida.<br>
+        Quero a verdade contida nos teus olhos,<br>
+        A sensibilidade das curvas do teu corpo.<br><br>
+
+        Quero a doçura do mel que guardas em tua boca,<br>
+        A glória de ter sua presença iluminando os meus caminhos.<br>
+        Quero estar entrelaçado nos versos que escreves.<br>
+        Quero estar em sua mente, no seu pensamento.<br><br>
+
+        Quero viver suas alegrias, compartilhar de sua harmonia.<br>
+        Escutar tua canção, ler teus livros preferidos, ver teu filme predileto.<br>
+        E quem sabe até me afastar de você algum dia,<br>
+        Só pra te salvar da minha intensa e insana possessão.
+    </div>
+</div>
+
+<!-- Poema 18 -->
+<div class="poem">
+    <div class="poem-title">A Musa do Trovador</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        A musa do trovador traz o antídoto para a solidão,<br>
+        A cura das mazelas que existem no mundo,<br>
+        E o encanto das rosas que desabrocham<br>
+        Com o amadurecimento do seu corpo.<br><br>
+
+        A musa do trovador possui o seu brilho natural,<br>
+        Que ilumina as veredas mais profundas de um coração sonhador,<br>
+        Libertando o poeta das obscuridades<br>
+        Que a paixão nos impõe.<br><br>
+
+        Ela! A musa dentre as musas,<br>
+        Que me faz escrever, cantar e tocar<br>
+        O sentimento que nos toma repentinamente,<br>
+        Exaltando o que há de melhor dentro de nós.<br><br>
+
+        A musa mais perfeita de todas,<br>
+        Que deixa o gosto do seu beijo na boca,<br>
+        Quando me arrebata em seus braços,<br>
+        Me amando loucamente,<br>
+        Enquanto lhe digo frases soltas e sinceras<br>
+        Do quanto a amo e a desejo em meus braços.
+    </div>
+</div>
+
+<!-- Poema 19 -->
+<div class="poem">
+    <div class="poem-title">Distante de você</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Sei que tenho andado um pouco distante de você,<br>
+        Que não tenho correspondido ao que representas pra mim,<br>
+        Que tenho me escondido por trás da sombra do teu nome.<br><br>
+
+        Sei que não sou digno ao teu amor,<br>
+        Que nunca me sentirei completo distante de ti,<br>
+        Que jamais deveria me afastar dessa forma como me afastei.<br><br>
+
+        Só eu sei o quanto a vida é chata sem você,<br>
+        O quanto sofro sem o teu querer por mim,<br>
+        O quanto choro ao lembrar tua voz,<br>
+        E não ter você por perto outra vez pra dizer que te amo.<br><br>
+
+        Só eu ainda sinto o teu cheiro entorpecendo-me de prazer,<br>
+        E recito mil vezes se possível os versos que mais gostas.<br><br>
+
+        Somente por você e mais ninguém,<br>
+        Migraria até o íntimo de minha memória e de minha alma,<br>
+        Em busca dos momentos que vivenciamos,<br>
+        Das palavras e prazeres que trocamos.<br><br>
+
+        A fim de nos conquistar mesmo que secretamente,<br>
+        Como toda grande e bela história de amor já escrita ou eternizada.<br><br>
+
+        Sei que tenho andado distante, muito distante.<br>
+        Mas agora estou de volta e com sede de te amar.<br>
+        Sei que mudei e pensei bastante nesses últimos dias,<br>
+        E me perguntei se deveria recomeçar toda essa história.<br><br>
+
+        Mas um amor verdadeiro não se vive à distância!<br>
+        Por isso vim aqui pra te buscar outra vez.
+    </div>
+</div>
+
+<!-- Poema 20 -->
+<div class="poem">
+    <div class="poem-title">Cálire</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Lado oculto da alma explícita,<br>
+        Poço de emoções e sentimentos,<br>
+        Encontros e revelações,<br>
+        Em busca de prazer.<br><br>
+
+        Limite entre dimensões e estados,<br>
+        Entre o sonho e o tangível.<br>
+        Fantasia e realidade se misturam,<br>
+        Ao alcançar seu apogeu deslumbrantemente.<br><br>
+
+        Espírito dos seres humanos,<br>
+        Núcleo de uma história sem fim.<br>
+        Descrições infinitas,<br>
+        Cálidas, líricas e reflexivas.<br><br>
+
+        Harmoniosa e nutritiva,<br>
+        Consumida exaustivamente,<br>
+        Perante a necessidade de amor empregada,<br>
+        Sensitivelmente idealizada.
+    </div>
+</div>
+
+<!-- Poema 21 -->
+<div class="poem">
+    <div class="poem-title">Por que escrevo?</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Escrevo porque gosto, porque sinto prazer...<br>
+        Porque me encontro no brilho dos teus olhos,<br>
+        E porque me perco na beleza do teu sorriso.<br><br>
+
+        Escrevo apenas quando posso e acho que devo,<br>
+        Quando a poesia não se torna monótona ou banal,<br>
+        Quando a magia de sua presença não se confunde<br>
+        Com a alegria estampada em meu rosto.<br><br>
+
+        Escrevo por esse momento... Ainda mais se ele for inoportuno.<br>
+        Escrevo porque encontro nas palavras uma beleza inexistente,<br>
+        Incomparavelmente com a que trazes.<br><br>
+
+        Escrevo ainda mais quando percebo que a caneta<br>
+        É minha única, verdadeira e solitária companhia.<br>
+        Quando o gosto da poesia insiste ficar em meus lábios,<br>
+        Fazendo-me consumir cada fio de pensamentos e ideias.<br><br>
+
+        Escrevo principalmente porque me faz bem,<br>
+        Porque sempre que preciso encontro nas palavras<br>
+        Um espaço metafísico que me acolhe por inteiro.<br><br>
+
+        Porque sempre que acordo sei que mais um dia me espera.<br>
+        Escrevo por vício, por amor, por sentimentos...<br>
+        Escrevo principalmente porque te amo!
+    </div>
+</div>
+
+<!-- Poema 22 -->
+<div class="poem">
+    <div class="poem-title">Enquanto Há Criação</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Folhas avulsas destacadas ao vento,<br>
+        Restos mortais de um poema inacabado.<br>
+        Frases incompletas, gestos inconsequentes,<br>
+        Palavras cálidas que expressam dor.<br><br>
+
+        Amor, romances escritos, poesia romântica,<br>
+        Expressões literárias a fim de me conquistar.<br>
+        Vasto mundo que me desdobra por inteiro,<br>
+        Janeiro, fevereiro a te encontrar.<br><br>
+
+        Declamando meu soneto,<br>
+        Por entre as veredas desse nosso carnaval,<br>
+        Lírico, romântico a se desmistificar.<br><br>
+
+        Poesia completa, sentimentos a me aflorar,<br>
+        Pensamentos, crítica, consciência,<br>
+        Armas perfeitas para nossa compreensão,<br>
+        Mais que tudo difícil de realizar.<br><br>
+
+        Palavra, diálogo, entendimento,<br>
+        Razão de uma vida inteira a se revelar.<br>
+        Poesias ao acaso, inspirações repentinas,<br>
+        Conceitos pós-modernistas da criação.
+    </div>
+</div>
+
+<!-- Poema 23 -->
+<div class="poem">
+    <div class="poem-title">Havia um tempo sem tempo</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Houve um tempo em que as palavras ainda eram doces.<br>
+        Existia um sentimento mais profundo por trás de tudo isso.<br>
+        A mesmice ainda não nos tinha tomado.<br><br>
+
+        Sim, houve uma era em que seus beijos me tocavam,<br>
+        E seu perfume me dilacerava até então.<br>
+        Passou-se o tempo além do tempo que nos restava.<br><br>
+
+        Não pude perceber sua presença, seu corpo deixou de ser o meu.<br>
+        As pessoas se tornaram inconstantes, assim como você.<br>
+        Talvez quisesse um pouco de carinho misturado com atenção.<br>
+        Talvez em meus desejos não lhe coubesse assim.<br><br>
+
+        Deixei-me levar por um sentimento infantil estatizado em meu coração,<br>
+        Sendo enganado, incontestavelmente, pelos meus desejos,<br>
+        Coagindo essa realidade maquiada ao modo de se ver (sentir).<br><br>
+
+        Quem sabe a vida me repugnou outra vez?<br>
+        Estraguei-me em suas mãos, aniquilando o meu ser.<br>
+        Mais uma vez me perdi nas palavras venenosas que saem da tua boca,<br>
+        E morri assassinado pelo teu olhar explícito, incontestável.<br><br>
+
+        Não guardo rancores nem saudosismos do nosso amor.<br>
+        Só creio que não acredites mais em mim.<br>
+        É difícil de explicar...<br>
+        Me traí ao gostar dessa forma de você.
+    </div>
+</div>
+
+<!-- Poema 24 -->
+<div class="poem">
+    <div class="poem-title">Sou Poeta</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Sou poeta: podes crer!<br>
+        Tenho em meu sangue a maestria das letras,<br>
+        O gosto corrompido do amor.<br>
+        Minha estrada é feita de feridas.<br><br>
+
+        Sou observador da vida alheia,<br>
+        Capturo sensações com o meu olhar.<br>
+        Tenho o poder da pena em minhas mãos.<br>
+        Às vezes brinco de ser Deus quando escrevo,<br>
+        Escolho emoções para retratar à minha maneira.<br><br>
+
+        Veja o mundo sob minha ótica!<br>
+        Olhe como ele é belo e diferente do seu.<br>
+        Sou poeta! Sou artista!<br>
+        Faço parte do meu tempo, mas estou longe de estar contido nele.<br>
+        Sou atemporal, enigmático!<br><br>
+
+        Meu lugar é bem distante deste mundo cruel e sem poesia.<br>
+        Meu trabalho é chamar a atenção de vocês,<br>
+        Para que enxerguem finalmente o quanto estão vivendo errado.<br><br>
+
+        Da vida não levamos dinheiro, beleza,<br>
+        Nem essas coisas pequenas e mesquinhas.<br>
+        Da vida só levamos o amor vivenciado aos extremos,<br>
+        E a poesia que nos toca a alma e fortalece o espírito.<br><br>
+
+        Sou tão importante quanto você,<br>
+        Mas existem pessoas que confundem o poeta com o malandro.<br>
+        Sem poesia você não vive, assim como eu também não.<br><br>
+
+        Alimentemos nossos corações,<br>
+        Cuidemos para que o nosso amor não se transforme em uma ferida viva.<br>
+        Vivamos a poesia também aos extremos.<br>
+        Deleitemos nossos olhos com palavras e sensações inesperadas.<br><br>
+
+        Afinal: isso é o que nos torna seres humanos.
+    </div>
+</div>
+
+<!-- Poema 25 -->
+<div class="poem">
+    <div class="poem-title">A Essência da Vida</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Caem as folhas no jardim em meio ao outono desprovido,<br>
+        Vestígios dessa bruma relevante.<br>
+        Toca-me como pétalas que se distinguem,<br>
+        Dentre a mais inebria das primaveras,<br>
+        Complementando-me diante<br>
+        Do mais súbito sentimento despertado em ti.<br><br>
+
+        Acalenta-me essa doce fragrância,<br>
+        Presente em seu universo cósmico,<br>
+        Perante a estrutura do meu ser inacabado.<br>
+        Compele-me ao seu amor longitudinal,<br>
+        Distinto de sua fragilidade única,<br>
+        Dona de um espaço físico individual.<br><br>
+
+        De seus gestos incomplementados pela vida,<br>
+        Pensamentos acima da compreensão humana,<br>
+        Me revelo em cada olhar.<br>
+        De cada palavra me vejo diante dos teus olhos,<br>
+        Tocando-me a alma como um beija-flor,<br>
+        Sobrevoa as acácias em meu jardim.<br><br>
+
+        Acaricia-me sua imagem benevolente,<br>
+        Em meio à poesia lírica onde descreve-me,<br>
+        Em todos os sentidos da arte contemporânea.<br>
+        Mistificado sentimento que nos aflora,<br>
+        Transbordando todo azul do mar,<br>
+        Por sobre a beleza poética que remetes.<br><br>
+
+        Pena que a vida arrancou-me essa imagem,<br>
+        E jogou-lhe ao chão estragando-a por inteiro,<br>
+        Arrasando-nos e colocando-nos<br>
+        A mais um simples fato inserido na mesma.<br>
+        Como se nós não fossemos a exceção,<br>
+        Contida em mais um simples poema romântico.
+    </div>
+</div>
+
+<!-- Poema 26 -->
+<div class="poem">
+    <div class="poem-title">Foi Assim</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Éramos somente a amizade, éramos a compreensão.<br>
+        Hoje somos desejos, hoje somos paixão.<br>
+        Começou como quem não quer nada,<br>
+        Um abraço e um aperto de mão.<br>
+        Nos apresentamos um ao outro:<br>
+        - Oi! Meu nome é . . . . . .  E o seu?<br>
+        - Prazer, me chamo . . . . . .<br>
+        Foi assim, meio inesperado para ambas as partes,<br>
+        E desde já sabia que podia contar com você.<br>
+        Ficamos colegas... Depois amigos!<br>
+        Passei a frequentar mais tua casa e conversar com tua gente.<br>
+        Quando percebi era tarde demais,<br>
+        Você já fazia parte da minha vida,<br>
+        Já estava contida dentro do meu pequeno universo romântico.<br>
+        Tentei disfarçar para que nossos amigos não percebessem<br>
+        Que eu gostava tanto de você.<br>
+        Mas que bobagem essa minha em relação a nós dois!<br>
+        Ninguém luta contra o amor!<br>
+        Por mais que se tente, não conseguimos ocultá-lo.<br>
+        Sim... Eu sentia medo de te perder para alguém,<br>
+        Mas também não imaginava tua reação<br>
+        Ao saber que te amava loucamente.<br>
+        Eu tinha medo de te perder...<br>
+        Eu tinha medo de te conquistar...<br>
+        Mas continuava te amando secretamente dentro de mim.<br>
+        Disfarçava o quanto podia, fingindo nada acontecer.<br>
+        Escrevia versos à noite tentando nos compensar sentimentalmente.<br>
+        Pensava e repensava o que queria te dizer...<br>
+        Te imaginava em cada segundo do meu longo dia sem tua presença.<br>
+        Olhava insistentemente para o número do teu telefone,<br>
+        Lia e relia tua fotografia 3x4 que guardava na minha carteira,<br>
+        Mas não tinha coragem para abrir meus sentimentos.<br>
+        Foi assim que o tempo se passou e, sem querer, te vi nos braços de outro.<br>
+        Tive que assassinar o meu amor<br>
+        E esquecer de sua existência temporariamente,<br>
+        Porque ainda acredito que, se ainda tiver mais uma chance,<br>
+        Nunca mais sairei do teu lado.<br>
+        Palavra de poeta.
+    </div>
+</div>
+
+<!-- Poema 27 -->
+<div class="poem">
+    <div class="poem-title">Em Segredo</div>
+    <div class="poem-author">em parceria com Luciana Souza</div>
+    <div class="poem-content">
+        Te amo, mas é segredo.<br>
+        Estou aqui chamando por ti,<br>
+        Que nem sabes de mim.<br>
+        Sinto a necessidade de ter você comigo,<br>
+        Mas meus medos e minhas angústias<br>
+        Me repelem e fujo de ti.<br><br>
+
+        Você nem mesmo sabe que sofro assim,<br>
+        Que choro por ti, que me escondo, enfim...<br>
+        Não, não irei lhe revelar esse segredo,<br>
+        Que guardo a sete chaves dentro do peito.<br><br>
+
+        Sigo teus passos de longe,<br>
+        Vejo você ir embora sem ao menos olhar pra trás.<br>
+        Sinto o gosto amargo da despedida cada vez que te encontro.<br>
+        Tenho vontade de dizer: “Eu te amo!”,<br>
+        Mas algo me cala, me torna vulnerável.<br><br>
+
+        É o medo de que você não queira me ouvir.<br>
+        Mas um dia a mudança irei fazer,<br>
+        Então soltarei todo esse amor que me sufoca.<br>
+        Desta vez tenho certeza de que você me ouvirá,<br>
+        Sem pedir para calar-me.<br><br>
+
+        Enquanto isso ficarei sofrendo em silêncio todo esse amor,<br>
+        Que me consome dia e noite,<br>
+        Te amando em segredo.<br>
+        E o meu maior medo é que alguém chegue antes de mim.
+    </div>
+</div>
+
+<!-- Poema 28 -->
+<div class="poem">
+    <div class="poem-title">Dias Melhores</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Já não basta tudo o que passamos e aturamos em nosso dia a dia?<br>
+        Já não basta ter que acordar cedo e encarar essa batalha pela vida?<br>
+        Já não basta sofrer as desilusões que esse mundo nos oferece?<br>
+        Já não basta ter que rir para não chorar?<br><br>
+
+        Sonhamos com dias melhores, com momentos de glória e vitórias.<br>
+        Já estamos tão acostumados com essa rotina<br>
+        Que perdemos o nosso senso de humor.<br>
+        Mas a mudança está para chegar...<br><br>
+
+        Onde podemos encontrar o verdadeiro sabor dessa vida?<br>
+        Nas coisas simples... Talvez...<br>
+        No sorriso de uma criança, nos malabarismos da vida.<br>
+        No choro parco do simples palhaço do circo,<br>
+        No sabor de uma grande conquista.<br><br>
+
+        Na arte em sua essência,<br>
+        Nos pequenos gestos que fazemos em nosso cotidiano.<br>
+        No amor e no ato de poder se confiar a um amigo.<br><br>
+
+        Aos companheiros que estão juntos nessa luta,<br>
+        Desejo-lhes sorte e união.<br>
+        Aos que ainda não pararam para refletir,<br>
+        Peço apenas compreensão.<br><br>
+
+        Já não basta ficar boa parte de nossa vida sem poder saboreá-la?<br>
+        Já não se pode ficar como sempre se ficou de braços cruzados,<br>
+        Olhando-a de longe e acenando com a mão.<br><br>
+
+        Temos que arriscar, fazer mudanças e nunca ter medo de errar.<br>
+        E quando isso finalmente acontecer,<br>
+        Tenho certeza de que dias melhores estão pra chegar.
+    </div>
+</div>
+
+<!-- Poema 29 -->
+<div class="poem">
+    <div class="poem-title">Manhã</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Manhã nasceu como pétalas de rosa,<br>
+        Revelando todo seu esplendor,<br>
+        Trazendo de novo a paz<br>
+        Que a mãe natureza inspirou.<br><br>
+
+        Manhã se foi num barco,<br>
+        Navegando sem destino,<br>
+        Conhecendo o infinito<br>
+        Em cada porto que chegou.<br><br>
+
+        Manhã se fez contente,<br>
+        Reluzente por onde andou.<br>
+        Trouxe lembranças na alma<br>
+        De cada lugar que ficou.<br><br>
+
+        Manhã tornou-se ausente,<br>
+        Deixou tristeza onde passou.<br>
+        Mas hoje está de volta,<br>
+        Ainda bem que retornou.
+    </div>
+</div>
+
+<!-- Poema 30 -->
+<div class="poem">
+    <div class="poem-title">Mundo verso, verso mudo</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Chão batido pela poesia,<br>
+        Escrita pelas mãos trêmulas,<br>
+        Que afagaram todo um sentimento,<br>
+        Cálido acima de suas emoções.<br><br>
+
+        Letras negras inspiradas<br>
+        Em seus olhos, poço infindo<br>
+        De mistérios e seduções.<br>
+        Corações a navegar,<br>
+        Pelos portos, pelos mares,<br>
+        Por estradas e pelos bares.<br><br>
+
+        Horizontes a desmistificar,<br>
+        Entre corpos, entre beijos,<br>
+        Pressupõe-se nada mais.<br>
+        Pelas noites frias e úmidas,<br>
+        Gasto minhas salivas recitando-lhe<br>
+        Versos tristes e esperançosos,<br>
+        Fracassados pela inconsistência do ser.<br><br>
+
+        Amargo jeito que me olhas,<br>
+        Que me remete ao teu silêncio,<br>
+        Que me concede ao teu pecado,<br>
+        Um único jeito de ser.<br><br>
+
+        Invalidado sentimento que me contém,<br>
+        Que me ocupa o espaço de um amor verdadeiro,<br>
+        E me oculta diante da vida,<br>
+        Sem trilhas obscuras a me castigar.<br><br>
+
+        Pela dor, pelo amor busco minhas inspirações,<br>
+        Em solidões passadas contínuo jeito de ser.<br>
+        Mundo verso, verso mudo,<br>
+        O que me faz dizer?
+    </div>
+</div>
+
+<!-- Poema 31 -->
+<div class="poem">
+    <div class="poem-title">Vida de Poeta</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Textos complexos, mãos espalmadas pela poesia lírica,<br>
+        Frases tortas e significantes remetidas a uma só pessoa.<br>
+        Possuem uma mútua sonoridade e eficaz percepção,<br>
+        Lirismo poético e reflexão acentuada.<br><br>
+
+        Será que esses dois estilos se encaixam?<br>
+        Misturar palavras, sentimentos, prazeres e sensações,<br>
+        Eis o maior sonho de todos os poetas.<br>
+        Escritores esses que redigem seus carmas,<br>
+        Sempre em busca da perfeição.<br><br>
+
+        Usando inspirações em forma de palavras, evidenciam suas vidas,<br>
+        E tudo aquilo que os seus olhos enxergam.<br>
+        Seu corpo sente um momento introspectivo,<br>
+        Rebuscam ideias e anseios para construir seus versos.<br><br>
+
+        Pensam naquilo que muita gente prefere esquecer,<br>
+        Escrevem muitas vezes sobre assuntos contundentes.<br>
+        Vivem, nem que seja apenas por um segundo,<br>
+        Fantasias que assombram nossa literatura lírico-amorosa.<br><br>
+
+        E no final, olham tristes para o papel,<br>
+        Refletindo tudo que está escrito,<br>
+        Desse modo alcançando finalmente a felicidade<br>
+        De mais um poema em seu infinito acervo.<br><br>
+
+        Versos verdadeiros, palavras sinceras.<br>
+        Poesia não é mentira: é verdade e prazer!<br>
+        E por fim, entregam a caros leitores, assim como você,<br>
+        Para que possam desfrutar de tudo o que se foi dito (escrito).
+    </div>
+</div>
+
+<!-- Poema 32 -->
+<div class="poem">
+    <div class="poem-title">Sala de Penumbra</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Sala de penumbra:<br>
+        Lugar bom pra se enxergar o mundo com outros olhos.<br>
+        Ao meu alcance está a chave<br>
+        Para um universo de palavras e conhecimentos.<br><br>
+
+        Tenho o poder de escrever tudo o que penso,<br>
+        Dos outros e de mim.<br>
+        Tenho ao meu dispor as armas da batalha:<br>
+        O lápis, a caneta, o papel e uma infinidade<br>
+        De pensamentos que desabrocham em meu pensar.<br><br>
+
+        A bebida heróica esfria sobre a mesa.<br>
+        Tenho um cálice borbulhante em minhas mãos,<br>
+        Que irá me fortalecer durante o combate<br>
+        No vasto campo de sabedoria,<br>
+        Em que irei me encontrar dentro de alguns minutos.<br><br>
+
+        Vejo as palavras voar sobre minha cabeça.<br>
+        Ideias e pensamentos desabrocham,<br>
+        Como um ramo de flores que habita o meu saber.<br><br>
+
+        E assim vou degustando todo o conteúdo filosófico<br>
+        De cargas literárias, poéticas, questionativas e sensitivas,<br>
+        Que acabo de sentir e transmitir para você, leitor.
+    </div>
+</div>
+
+<!-- Poema 33 -->
+<div class="poem">
+    <div class="poem-title">Em Todos os Lugares</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Escrever poemas com pétalas de rosa,<br>
+        Gravando os nossos nomes em talhe,<br>
+        Eternizando nossa árvore no parque,<br>
+        Em que te amei e sempre estaremos lá,<br>
+        Enquanto não podarem nosso amor.<br><br>
+
+        Rabiscar-te na areia branca,<br>
+        Onde o mar toma conta ao banhar-te,<br>
+        Em águas tépidas com o calor do sol.<br>
+        Tomando-me de lembranças, imagino-te<br>
+        Em meio a essa bruma que ao vento se desfaz.<br><br>
+
+        Contando as estrelas das noites de luar,<br>
+        Acabo por ver sua constelação,<br>
+        Em volta à estrela matutina,<br>
+        Dentre as nuvens que se passam,<br>
+        Perpetuam a existência do meu ser.<br><br>
+
+        Na casa de campo, sentar no terraço,<br>
+        E lembrar de tudo o que passamos.<br>
+        Ver seu rosto a pairar pelo ar,<br>
+        E o nosso amor ficar fincado,<br>
+        Para sempre em meu coração.<br><br>
+
+        Em todos os lugares carrego-te,<br>
+        Mesmo em sua ausência.<br>
+        Eterna tatuagem cravada em meu peito,<br>
+        No parque, na praia, nas estrelas,<br>
+        E em tudo o que couber nessa vida.<br>
+        Te amo!
+    </div>
+</div>
+
+<!-- Poema 34 -->
+<div class="poem">
+    <div class="poem-title">Até que ponto vale a pena?</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Até quando devo guardar esse segredo?<br>
+        Esse amor verdadeiro que explode no meu peito.<br>
+        Até quando devo me torturar por causa de você?<br><br>
+
+        Sei que o tempo é curto.<br>
+        Sei que bons momentos jamais irão retornar.<br>
+        Sei que a vida é bela...<br><br>
+
+        Até quando vou me perguntar por você?<br>
+        Até onde faz sentido ficar sem te ter?<br>
+        Até que ponto vale a pena te amar?<br>
+        Se já nem consigo mais me encontrar.
+    </div>
+</div>
+
+<!-- Poema 35 -->
+<div class="poem">
+    <div class="poem-title">Da Vida com o Tempo</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Preciso de um tempo, preciso da vida.<br>
+        Preciso de mim e de você.<br>
+        Também preciso de tudo que ainda não provei.<br>
+        Preciso viver o que não vivi,<br>
+        Descobrir coisas novas...<br>
+        E sonhar o que por certo ainda não sonhei.<br><br>
+
+        Preciso de tudo e de todos.<br>
+        Preciso principalmente de você!<br>
+        Quero precisar de mim<br>
+        E poder contar comigo pro que der e vier.<br><br>
+
+        Preciso saber o que de fato ainda não sei,<br>
+        E achar o que nunca achei sobre as coisas.<br>
+        Preciso mudar para me sentir melhor.<br>
+        Preciso de tudo que possas imaginar.<br><br>
+
+        Resgatar meus valores morais,<br>
+        Que a vida arrancou-me brutalmente,<br>
+        Devido às circunstâncias mais inesperadas.
+    </div>
+</div>
+
+<!-- Poema 36 -->
+<div class="poem">
+    <div class="poem-title">Literatu’s</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        As palavras me escorrem pelos poros,<br>
+        E as ideias fervilham em minha cabeça.<br>
+        Será que é isso que chamam de inspiração?<br><br>
+
+        Sinto o gosto da literatura em minha boca,<br>
+        E o cheiro das páginas dos livros se impregnando em mim.<br>
+        Não há como esconder<br>
+        As manchas de tinta da caneta em meus dedos,<br>
+        E o sabor do café quente em minha boca.<br><br>
+
+        Sinto o passar das horas,<br>
+        Mas estou vagando em minha mente,<br>
+        Explorando e desbravando os sentimentos que existem em mim.<br><br>
+
+        Vou compelindo as informações<br>
+        Com os fragmentos de minha dolorosa alma,<br>
+        Para escrever os mais belos versos.<br><br>
+
+        Sejam tristes e obscuros,<br>
+        Românticos ou de escárnio,<br>
+        Eu quero viver eternamente com os mestres do saber,<br>
+        Os mestres que me ensinaram a viver e a amar,<br>
+        A passar para o papel um pouco do que habita em mim.<br><br>
+
+        Deus... Eu quero viver com as palavras,<br>
+        Porque os humanos me decepcionam demais.<br>
+        Sou um turbilhão efervescente de emoções,<br>
+        Numa profusão infinita de sensações.<br>
+        Como um fio de alta voltagem desencapado,<br>
+        Propagando a difícil arte de amar.
+    </div>
+</div>
+
+<!-- Poema 37 -->
+<div class="poem">
+    <div class="poem-title">Todos Querem Ser Assim</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Todos pensam iguais aos outros,<br>
+        Fingem ser felizes,<br>
+        Acham que tudo está muito bom,<br>
+        Fecham os olhos à realidade.<br><br>
+
+        Todos vivem confinados<br>
+        Em um mundo de sonhos e fantasias,<br>
+        Ocultando sua verdadeira personalidade,<br>
+        Marcada e caracterizada por terceiros.<br><br>
+
+        Todos acham que sabem de tudo,<br>
+        Poucos acham que sabem de nada.<br>
+        Pouco tudo... Todos nada...<br>
+        Acabam de saber.<br><br>
+
+        Todos vivem alienados,<br>
+        Fecham suas portas para o mundo,<br>
+        Deixam escapar todas as chances,<br>
+        Acabam servindo como apoio.<br><br>
+
+        Todos fazem o papel do besta,<br>
+        Vivem rindo das desgraças dos outros,<br>
+        Adoram se passar por ridículo,<br>
+        Virando assunto de piada para a nobreza.<br><br>
+
+        Todos querem ser diferentes,<br>
+        Quebrar um pouco a monotonia,<br>
+        Jogar o jogo de palavras,<br>
+        Fazer mudanças no dia a dia.<br><br>
+
+        Todos podem,<br>
+        Mas ninguém tem coragem para fazer.<br>
+        As pessoas têm preguiça de crescer,<br>
+        E fazer o que era sonho acontecer.
+    </div>
+</div>
+
+<!-- Poema 38 -->
+<div class="poem">
+    <div class="poem-title">Inspiração</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Minha poesia vaga na escuridão,<br>
+        Sem os teus olhos para ler o que escrevo.<br>
+        Todo o meu sentimento se resume a nada,<br>
+        Quando me encontro longe de ti.<br><br>
+
+        Sinto o teu perfume exalando dentre as minhas letras,<br>
+        E o teu gosto em minhas palavras.<br>
+        Tento me achar na imensidão dos teus sentimentos,<br>
+        Procurando um sentido lógico para tanta dependência,<br>
+        Mas não encontro.<br><br>
+
+        Vejo fotografias na parede da minha memória,<br>
+        E escuto em minha mente a tua melodia preferida.<br>
+        Durante muito tempo tentei te ocultar dentro de mim,<br>
+        Como o segredo mais proibido deste mundo:<br>
+        A minha inspiração.
+    </div>
+</div>
+
+<!-- Poema 39 -->
+<div class="poem">
+    <div class="poem-title">Amor Inválido</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        O beijo e o mar,<br>
+        Beija-mar, namoro entre ondas.<br>
+        Limite dos desejos,<br>
+        Corrente da paixão.<br>
+
+        Elo de sentimentos,<br>
+        Mistério e sedução,<br>
+        Lembrança e consolo,<br>
+        Eterna sensação.<br>
+
+        Pura e ávida,<br>
+        Branca e cálida,<br>
+        Presente e inválida,<br>
+        Constante e impávida.<br>
+
+        Nessa dura recordação,<br>
+        Do mais náufrago coração,<br>
+        Derradeiro e viajante,<br>
+        Aventureiro errante.<br>
+        Desse amor platônico,<br>
+        Sóbrio, pitoresco e desbravador.
+    </div>
+</div>
+
+<!-- Poema 40 -->
+<div class="poem">
+    <div class="poem-title">A Poesia nas Poesias</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        A poesia não me cabe em suas formas oriundas,<br>
+        Muito menos por ser algo concreto e solidificado.<br>
+        A poesia me leva a um puro estado de espírito,<br>
+        Que não se encontra em qualquer lugar.<br><br>
+
+        A poesia da arte real,<br>
+        Realeza, imperatriz dos sete mares,<br>
+        Compilada em todos os sentidos.<br><br>
+
+        A poesia em si:<br>
+        De amores, rumores, fervores, exaltação.<br>
+        Renascença da arte em mim,<br>
+        Desmistificada entre linhas,<br>
+        Vivenciada em todos os aspectos.<br><br>
+
+        Sem barreiras, sem limites,<br>
+        Extra corporal,<br>
+        Arte exata,<br>
+        Amor.
+    </div>
+</div>
+
+<!-- Poema 41 -->
+<div class="poem">
+    <div class="poem-title">Uma Noite em Poesia</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Sopra o vento na janela do meu quarto.<br>
+        A noite fria e úmida parece anunciar<br>
+        A chegada da madrugada.<br><br>
+
+        O silêncio ecoa sobre os quatro cantos da casa vazia,<br>
+        Apenas o brilho das estrelas<br>
+        E uma xícara de café<br>
+        Me têm como companhia.<br><br>
+
+        Numa folha em branco,<br>
+        Te escrevo em versos o meu amor.<br>
+        Em cada palavra, a cada letra,<br>
+        Em cada pensamento...<br><br>
+
+        Enfim, de todas as maneiras,<br>
+        Não há como te esquecer.<br>
+        Na lembrança, momentos inesquecíveis:<br>
+        A primeira rosa, o primeiro beijo,<br>
+        A primeira troca de carícias,<br>
+        As primeiras palavras de amor.<br><br>
+
+        Nossa canção e o filme predileto.<br>
+        Hoje vejo, sem você sou mais um pelas ruas,<br>
+        Qualquer um sem sua paz.<br><br>
+
+        Hoje sinto você, doce fragrância,<br>
+        Que toma conta do meu corpo,<br>
+        Como um gesto de amor louco,<br>
+        Tomado em volta pela poesia.
+    </div>
+</div>
+
+<!-- Poema 42 -->
+<div class="poem">
+    <div class="poem-title">Nossa Vida</div>
+    <div class="poem-author"></div>
+    <div class="poem-content">
+        Quantas vezes já te dei letras negras rabiscadas no papel?<br>
+        Já nem sei ao certo o que falei ou escrevi.<br>
+        Só sei que eram palavras árduas de se dizer,<br>
+        Palavras que expressavam um caminho sem volta.<br><br>
+
+        Um destino que por ventura não ocorrerá,<br>
+        Por certo enquanto estivermos nessas condições,<br>
+        Morais, psíquicas e intelectuais.<br>
+        Não sairemos do canto se não formos à luta.<br><br>
+
+        Temos tudo ao nosso favor... Sim, temos tudo.<br>
+        Não temos nada.<br>
+        Nada o que perder ou explicar.<br><br>
+
+        Se esse amor corrompe-me dias e noites,<br>
+        A fim de me torturar pelas lembranças de ti,<br>
+        Só me resta te agradecer por tudo o que me tem passado.<br><br>
+
+        Estado de coma, estado crítico, analítico... Enfim...<br>
+        Me transformaste em poeta!<br>
+        É a vida se modificando para se redimir ao mais simples detalhe oculto,<br>
+        Vencendo barreiras e horizontes conquistados.<br><br>
+
+        Tenho tudo para ser feliz,<br>
+        Mas você me arranca esse direito usufruindo-me de todas as formas,<br>
+        Insanas, babacas, utópicas e sensoriais.<br><br>
+
+        Triste fim de minha vida jogado em suas mãos.<br>
+        Coração velejador que busca a beleza eterna no horizonte,<br>
+        Do mar, do rio, da vida e de tudo o que é mais sagrado.<br><br>
+
+        Mais do mesmo amor indiferente pelo fato e desfatos,<br>
+        Contraditórios prazeres de sua existência.<br>
+        Mais que um poema, sou um grito de alerta.
+    </div>
+</div>
+
+<!-- Rodapé -->
+        <div class="footer">
+            &copy; 2025<br>Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("bookImage").onclick = function () {
+            let modal = document.getElementById("imageModal");
+            let modalImg = document.getElementById("modalImg");
+
+            modalImg.src = this.src; // Define a imagem dentro do modal
+            modal.classList.add("show");
+        };
+
+        document.getElementById("imageModal").onclick = function (event) {
+            if (event.target === this || event.target.classList.contains("close-modal")) {
+                this.classList.remove("show");
+                setTimeout(() => { this.style.display = "none"; }, 300);
+            }
+        };
+    </script>
+</body>
+</html>
