@@ -177,7 +177,7 @@
         padding: 0;
         overflow-x: hidden;
     }
-
+    
     /* Container principal ocupa toda a largura com leves espaçamentos laterais */
     .container {
         width: 100%;
@@ -186,28 +186,12 @@
         box-sizing: border-box;
         border: none;
     }
-
-    /* Títulos e textos de abertura alinhados à esquerda e com tamanho consistente */
-    .title,
-    .author-notes-title,
-    .poem-title {
-        text-align: left;
-        font-size: 1.1em; /* Mesmo tamanho da fonte dos poemas */
-        margin-bottom: 0.5rem;
-    }
-
-    /* Notas do autor */
-    .author-notes-content {
-        text-align: left;
-        font-size: 1rem;
-        line-height: 1.7;
-        margin-bottom: 1.2rem;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-
+    
+    /* 
+      Não alteramos os estilos dos títulos (.title, .poem-title, .author-notes-title)
+      para que permaneçam com o estilo original definido fora desta media query.
+    */
+    
     /* Container de cada poema */
     .poem {
         width: 100%;
@@ -215,13 +199,12 @@
         padding: 0 10px;
         box-sizing: border-box;
     }
-
-    /* Conteúdo dos poemas: alinhado à esquerda, com tipografia consistente e sem bordas/padding indesejados */
+    
+    /* Conteúdo dos poemas: alinhado à esquerda com tipografia consistente */
     .poem-content {
-        text-align: left !important;
-        font-size: 1.1em;
+        text-align: left;
+        font-size: 1.1em;  /* Tamanho da fonte dos poemas */
         line-height: 1.8;
-        margin-bottom: 1.2rem;
         white-space: pre-wrap;
         word-wrap: break-word;
         overflow-wrap: break-word;
@@ -229,27 +212,29 @@
         border-left: none;
         padding-left: 0;
     }
-
-    /* Sistema de cores para estrofes: cada estrofe deve estar encapsulada em um <p> */
+    
+    /* Sistema de cores para estrofes dos poemas.
+       Cada estrofe deve estar encapsulada em um <p> dentro de .poem-content.
+       O margin é zerado para evitar espaçamentos indesejados entre os versos. */
     .poem-content p {
-        margin: 0;
+        margin: 0;       /* Remove o espaçamento extra entre as estrofes */
         padding: 10px;
         border-radius: 4px;
-        margin-bottom: 10px;
     }
     
+    /* Cores suaves inspiradas em tons de café, alternando a cada 3 estrofes */
     .poem-content p:nth-child(3n+1) {
-        background-color: #f3e0c3;  /* Tom creme suave, lembra o leite do café */
+        background-color: #f3e0c3;  /* tom creme suave */
     }
     
     .poem-content p:nth-child(3n+2) {
-        background-color: #e0c097;  /* Tom médio, evoca a cor do café com leite */
+        background-color: #e0c097;  /* tom médio, lembra café com leite */
     }
     
     .poem-content p:nth-child(3n+3) {
-        background-color: #d1a679;  /* Tom mais encorpado, remete ao café puro */
+        background-color: #d1a679;  /* tom mais encorpado, remete a café puro */
     }
-
+    
     /* Ajuste da capa do livro */
     .book-cover img {
         width: 100%;
@@ -258,15 +243,14 @@
         display: block;
         margin: 0 auto;
     }
-
-    /* Rodapé */
+    
+    /* Formatação do rodapé */
     .footer {
         text-align: center;
         font-size: 0.9rem;
         margin-top: 1.5rem;
     }
 }
-
 
     </style>
 </head>
