@@ -179,15 +179,16 @@
         overflow-x: hidden;
     }
 
-    /* Container ocupa 100% da tela, com padding mínimo para não "colar" no canto */
+    /* Container ocupa 100% da tela, sem margens extras */
     .container {
         width: 100%;
-        margin: 0 auto;
+        margin: 0;
         padding: 8px;
         box-sizing: border-box;
+        border-left: none; /* Remove qualquer borda lateral indesejada */
     }
 
-    /* Títulos continuam centralizados */
+    /* Ajusta alinhamento dos títulos e elementos textuais */
     .title,
     .author-notes-title,
     .poem-title {
@@ -195,7 +196,7 @@
         margin-bottom: 0.5rem;
     }
 
-    /* Texto de apresentação (notas do autor) mantém alinhamento à esquerda */
+    /* Ajusta o alinhamento do texto das notas do autor */
     .author-notes-content {
         text-align: left;
         font-size: 1rem;
@@ -207,55 +208,39 @@
         hyphens: auto;
     }
 
-    /* Versos dos poemas ocupam toda a largura e ficam alinhados à esquerda */
+    /* Ajuste do alinhamento e espaçamento dos poemas */
+    .poem {
+        width: 100%;
+        margin: 0;
+        padding: 10px 8px; /* Mantém padding para evitar toque na borda da tela */
+        box-sizing: border-box;
+    }
+
+    /* Garante que o início do verso fique corretamente alinhado na borda esquerda */
     .poem-content {
         text-align: left;
         width: 100%;
-        margin: 0;                 /* Remove espaçamento lateral extra */
-        padding: 0;               /* Remove padding interno extra */
-        line-height: 1.7;         /* Espaçamento entre linhas */
-        margin-bottom: 1.2rem;    /* Espaço abaixo do poema */
-        white-space: pre-wrap;    /* Preserva quebras de linha */
-        word-wrap: break-word;    
+        margin: 0;
+        padding: 0;
+        line-height: 1.7;
+        margin-bottom: 1.2rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
+        border-left: none; /* Remove a borda lateral para não criar espaçamentos indesejados */
     }
 
-    /* Espaçamento entre poemas */
-    .poem {
-        margin-bottom: 2rem;
-    }
-
-    /* Destaque para o título principal */
-    .title {
-        font-size: 2rem;
-        line-height: 1.3;
-        margin-bottom: 1rem;
-    }
-
-    /* Título das notas do autor e dos poemas */
-    .author-notes-title,
-    .poem-title {
-        font-size: 1.4rem;
-        line-height: 1.4;
-    }
-
-    /* Autor do poema */
-    .poem-author {
-        text-align: left;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-    }
-
-    /* Ajuste da capa do livro */
+    /* Ajusta a largura da capa do livro para melhor visualização */
     .book-cover img {
-        width: 80%;
+        width: 100%;
+        max-width: 300px;
         height: auto;
         display: block;
         margin: 0 auto;
     }
 
-    /* Rodapé centralizado */
+    /* Ajuste do rodapé */
     .footer {
         text-align: center;
         font-size: 0.9rem;
