@@ -202,7 +202,7 @@
     
     /* Conteúdo dos poemas: alinhado à esquerda com tipografia consistente */
     .poem-content {
-        text-align: left;
+        text-align: center;
         font-size: 1.1em;  /* Tamanho da fonte dos poemas */
         line-height: 1.8;
         white-space: pre-wrap;
@@ -213,28 +213,7 @@
         padding-left: 0;
     }
     
-    /* Sistema de cores para estrofes dos poemas.
-       Cada estrofe deve estar encapsulada em um <p> dentro de .poem-content.
-       O margin é zerado para evitar espaçamentos indesejados entre os versos. */
-    .poem-content p {
-        margin: 0;       /* Remove o espaçamento extra entre as estrofes */
-        padding: 10px;
-        border-radius: 4px;
-    }
-    
-    /* Cores suaves inspiradas em tons de café, alternando a cada 3 estrofes */
-    .poem-content p:nth-child(3n+1) {
-        background-color: #f3e0c3;  /* tom creme suave */
-    }
-    
-    .poem-content p:nth-child(3n+2) {
-        background-color: #e0c097;  /* tom médio, lembra café com leite */
-    }
-    
-    .poem-content p:nth-child(3n+3) {
-        background-color: #d1a679;  /* tom mais encorpado, remete a café puro */
-    }
-    
+       
     /* Ajuste da capa do livro */
     .book-cover img {
         width: 100%;
