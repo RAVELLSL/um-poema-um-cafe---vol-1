@@ -170,7 +170,7 @@
             padding: 10px;
         }
 
-      /* Estilos para telas menores (até 600px) */
+     /* Estilos para telas menores (até 600px) */
 @media (max-width: 600px) {
     /* Impede rolagem lateral */
     html, body {
@@ -186,7 +186,7 @@
         box-sizing: border-box;
     }
 
-    /* Títulos sempre centralizados */
+    /* Títulos sempre centralizados (título principal, notas do autor e títulos dos poemas) */
     .title,
     .author-notes-title,
     .poem-title {
@@ -194,52 +194,62 @@
         margin-bottom: 0.5rem;
     }
 
-    /* Mantém versos alinhados à esquerda
-       e melhora o 'fluxo' das linhas que forem inevitavelmente quebradas */
-    .poem-author,
-    .author-notes-content,
-    .poem-content {
+    /* Texto de apresentação (notas do autor) permanece alinhado à esquerda */
+    .author-notes-content {
         text-align: left;
-        font-size: 1rem;                /* Tamanho de fonte um pouco menor para evitar muitas quebras */
-        line-height: 1.7;               /* Maior espaçamento vertical entre as linhas */
-        margin-bottom: 1.2rem;          /* Espaço ao fim de cada bloco de texto */
-        white-space: pre-wrap;          /* Preserva quebras de linha originais */
-        word-wrap: break-word;          /* Força quebra de palavra para evitar desalinhamentos grandes */
-        overflow-wrap: break-word;      /* Compatibilidade adicional */
-        hyphens: auto;                  /* Hifenização em navegadores compatíveis */
+        font-size: 1rem;
+        line-height: 1.7;           /* Espaçamento vertical */
+        margin-bottom: 1.2rem;      /* Espaço após cada bloco */
+        white-space: pre-wrap;      /* Preserva quebras de linha */
+        word-wrap: break-word;      
+        overflow-wrap: break-word;  
+        hyphens: auto;
     }
 
-    /* Define margem extra entre blocos de poemas */
+    /* Poemas: versos centralizados */
+    .poem-content {
+        text-align: center;         /* Centraliza os versos */
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 1.2rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    /* Ajuste para cada poema (espaçamento entre poemas) */
     .poem {
         margin-bottom: 2rem;
     }
 
-    /* Ajusta o título principal */
+    /* Título principal em destaque */
     .title {
-        font-size: 2rem;  /* Destaque maior */
+        font-size: 2rem;
         line-height: 1.3;
         margin-bottom: 1rem;
     }
 
-    /* Ajuste do título das notas do autor e dos poemas */
+    /* Título das notas do autor e dos poemas */
     .author-notes-title,
     .poem-title {
         font-size: 1.4rem;
         line-height: 1.4;
     }
 
-    /* Autor do poema */
+    /* Autor do poema (se quiser centralizar também, basta trocar text-align aqui; deixei como está) */
     .poem-author {
+        text-align: left;
         font-size: 1.1rem;
         margin-bottom: 0.5rem;
     }
 
-    /* Ajusta a capa do livro para não quebrar o layout */
+    /* Ajuste da capa do livro para não quebrar o layout */
     .book-cover img {
         width: 80%;
         height: auto;
-        display: block;   /* Garante imagem em bloco */
-        margin: 0 auto;   /* Centraliza a capa */
+        display: block;  
+        margin: 0 auto; /* Centraliza a capa */
     }
 
     /* Rodapé */
