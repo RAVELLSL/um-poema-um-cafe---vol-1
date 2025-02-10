@@ -171,14 +171,14 @@
         }
 
 @media (max-width: 600px) {
-    /* Remove margens, padding e overflow horizontal */
+    /* Reset básico para telas menores */
     html, body {
         margin: 0;
         padding: 0;
         overflow-x: hidden;
     }
 
-    /* O container principal ocupa toda a largura com leves espaçamentos laterais */
+    /* Container principal ocupa toda a largura com leves espaçamentos laterais */
     .container {
         width: 100%;
         margin: 0;
@@ -187,15 +187,16 @@
         border: none;
     }
 
-    /* Centraliza os títulos */
+    /* Títulos e textos de abertura alinhados à esquerda e com tamanho consistente */
     .title,
     .author-notes-title,
     .poem-title {
-        text-align: center;
+        text-align: left;
+        font-size: 1.1em; /* Mesmo tamanho da fonte dos poemas */
         margin-bottom: 0.5rem;
     }
 
-    /* Formatação das notas do autor (mantém alinhamento à esquerda) */
+    /* Notas do autor */
     .author-notes-content {
         text-align: left;
         font-size: 1rem;
@@ -207,42 +208,49 @@
         hyphens: auto;
     }
 
-    /* O container de cada poema ocupa toda a largura disponível */
+    /* Container de cada poema */
     .poem {
         width: 100%;
-        margin: 0 auto;
+        margin: 0;
         padding: 0 10px;
         box-sizing: border-box;
     }
 
-    /* Ajusta o conteúdo dos poemas:
-       - Define um max-width para limitar a largura do bloco de texto.
-       - Centraliza o bloco na tela com margin auto.
-       - Remove a borda e o padding à esquerda que eram herdados da versão desktop.
-       - Aumenta um pouco o tamanho da fonte e centraliza o texto */
+    /* Conteúdo dos poemas: alinhado à esquerda, com tipografia consistente e sem bordas/padding indesejados */
     .poem-content {
-        max-width: 600px;       /* Limita a largura para melhorar a leitura */
-        margin: 0 auto;         /* Centraliza o bloco na tela */
-        text-align: center !important; /* Garante a centralização do texto */
-        font-size: 1.3em;       /* Aumenta o tamanho da fonte */
-        line-height: 1.8;       /* Melhora a legibilidade */
+        text-align: left !important;
+        font-size: 1.1em;
+        line-height: 1.8;
         margin-bottom: 1.2rem;
-        white-space: pre-wrap;  /* Preserva quebras de linha */
+        white-space: pre-wrap;
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
-        border-left: none;      /* Remove a borda à esquerda */
-        padding-left: 0;        /* Zera o padding à esquerda */
-        padding-right: 10px;    /* Opcional: adiciona um leve padding à direita */
+        border-left: none;
+        padding-left: 0;
     }
 
-    /* Garante que as quebras de linha (br) sejam renderizadas corretamente */
-    .poem-content br {
-        display: block;
-        content: "";
+    /* Sistema de cores para estrofes: cada estrofe deve estar encapsulada em um <p> */
+    .poem-content p {
+        margin: 0;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+    
+    .poem-content p:nth-child(3n+1) {
+        background-color: #f3e0c3;  /* Tom creme suave, lembra o leite do café */
+    }
+    
+    .poem-content p:nth-child(3n+2) {
+        background-color: #e0c097;  /* Tom médio, evoca a cor do café com leite */
+    }
+    
+    .poem-content p:nth-child(3n+3) {
+        background-color: #d1a679;  /* Tom mais encorpado, remete ao café puro */
     }
 
-    /* Ajusta a largura da capa do livro */
+    /* Ajuste da capa do livro */
     .book-cover img {
         width: 100%;
         max-width: 300px;
@@ -251,13 +259,14 @@
         margin: 0 auto;
     }
 
-    /* Formata o rodapé */
+    /* Rodapé */
     .footer {
         text-align: center;
         font-size: 0.9rem;
         margin-top: 1.5rem;
     }
 }
+
 
     </style>
 </head>
