@@ -170,28 +170,46 @@
             padding: 10px;
         }
 
-        /* 
-          Media query para telas menores que 600px 
-          (você pode alterar esse valor para o breakpoint desejado)
-        */
-        @media (max-width: 600px) {
-            /* Centraliza títulos e conteúdo em telas pequenas */
-            .title,
-            .author-notes-title,
-            .author-notes-content,
-            .poem-title,
-            .poem-author,
-            .poem-content,
-            .footer {
-                text-align: center !important; /* Sobrescreve o 'justify' */
-            }
+        /* Estilos para telas menores (até 600px) */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 10px;
+    }
 
-            /* Remove indentação e borda lateral na versão mobile */
-            .poem-content {
-                padding-left: 0 !important;
-                border-left: none !important;
-            }
-        }
+    .title,
+    .author-notes-title,
+    .poem-title,
+    .poem-author,
+    .author-notes-content,
+    .poem-content,
+    .footer {
+        text-align: center;
+    }
+
+    /* Ajuste de fontes para melhorar leitura em telas pequenas */
+    .title {
+        font-size: 2em;
+    }
+    .poem-title {
+        font-size: 1.5em;
+    }
+    .poem-author {
+        font-size: 1.2em;
+    }
+    .poem-content,
+    .author-notes-content {
+        font-size: 1.05em;
+        /* Garante a preservação dos versos e quebras de linha */
+        white-space: pre-wrap;
+    }
+
+    .footer {
+        font-size: 0.9em;
+    }
+}
+
     </style>
 </head>
 <body>
