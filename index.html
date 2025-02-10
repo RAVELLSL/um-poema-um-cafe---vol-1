@@ -169,6 +169,29 @@
             background-color: #f1f1f1;
             padding: 10px;
         }
+
+        /* 
+          Media query para telas menores que 600px 
+          (você pode alterar esse valor para o breakpoint desejado)
+        */
+        @media (max-width: 600px) {
+            /* Centraliza títulos e conteúdo em telas pequenas */
+            .title,
+            .author-notes-title,
+            .author-notes-content,
+            .poem-title,
+            .poem-author,
+            .poem-content,
+            .footer {
+                text-align: center !important; /* Sobrescreve o 'justify' */
+            }
+
+            /* Remove indentação e borda lateral na versão mobile */
+            .poem-content {
+                padding-left: 0 !important;
+                border-left: none !important;
+            }
+        }
     </style>
 </head>
 <body>
