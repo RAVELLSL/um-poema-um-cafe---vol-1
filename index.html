@@ -170,7 +170,7 @@
             padding: 10px;
         }
 
-   /* Estilos para telas menores (até 600px) */
+  /* Estilos para telas menores (até 600px) */
 @media (max-width: 600px) {
     /* Remove margens e padding extras */
     html, body {
@@ -197,7 +197,7 @@
         margin-bottom: 0.5rem;
     }
 
-    /* Ajusta o alinhamento do texto */
+    /* Ajusta o alinhamento e a formatação do texto nas notas do autor */
     .author-notes-content {
         text-align: left;
         font-size: 1rem;
@@ -209,7 +209,7 @@
         hyphens: auto;
     }
 
-    /* Ajuste dos poemas */
+    /* Ajusta o container de cada poema */
     .poem {
         width: 100%;
         margin: 0;
@@ -217,7 +217,7 @@
         box-sizing: border-box;
     }
 
-    /* Ajuste dos versos */
+    /* Ajusta a formatação do conteúdo dos poemas */
     .poem-content {
         text-align: left;
         width: 100%;
@@ -225,13 +225,13 @@
         padding: 0;
         line-height: 1.8; /* Melhora a legibilidade */
         margin-bottom: 1.2rem;
-        white-space: pre-wrap; /* Mantém quebras de linha */
+        white-space: pre-wrap; /* Mantém as quebras de linha */
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
     }
 
-    /* Ajuste da fonte para evitar cortes */
+    /* Garante que as quebras de linha (br) sejam renderizadas corretamente */
     .poem-content br {
         display: block;
         content: "";
@@ -246,7 +246,7 @@
         margin: 0 auto;
     }
 
-    /* Ajuste do rodapé */
+    /* Ajusta o rodapé */
     .footer {
         text-align: center;
         font-size: 0.9rem;
