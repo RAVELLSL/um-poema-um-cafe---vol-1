@@ -187,11 +187,6 @@
         border: none;
     }
     
-    /* 
-      Não alteramos os estilos dos títulos (.title, .poem-title, .author-notes-title)
-      para que permaneçam com o estilo original definido fora desta media query.
-    */
-    
     /* Container de cada poema */
     .poem {
         width: 100%;
@@ -211,15 +206,17 @@
         hyphens: auto;
         border-left: none;
         padding-left: 0;
+        text-indent: 0; /* Garante que não haja recuo no primeiro verso */
     }
-    
-    /* Sistema de cores para estrofes dos poemas.
-       Cada estrofe deve estar encapsulada em um <p> dentro de .poem-content.
-       O margin é zerado para evitar espaçamentos indesejados entre os versos. */
+
+    /* Ajuste específico para os parágrafos dos poemas */
     .poem-content p {
         margin: 0;       /* Remove o espaçamento extra entre as estrofes */
         padding: 10px;
         border-radius: 4px;
+        text-indent: 0 !important; /* Garante que nenhum parágrafo tenha recuo */
+        margin-left: 0 !important; /* Remove qualquer margem à esquerda */
+        padding-left: 0 !important; /* Remove qualquer padding extra à esquerda */
     }
     
     /* Cores suaves inspiradas em tons de café, alternando a cada 3 estrofes */
