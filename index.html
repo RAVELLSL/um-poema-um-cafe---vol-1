@@ -172,20 +172,20 @@
 
    /* Estilos para telas menores (até 600px) */
 @media (max-width: 600px) {
-    /* Remove rolagem lateral e padding extra */
+    /* Remove margens e padding extras */
     html, body {
         margin: 0;
         padding: 0;
         overflow-x: hidden;
     }
 
-    /* Ajusta o container para ocupar 100% da largura */
+    /* Ajusta o container para ocupar toda a largura */
     .container {
         width: 100%;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        border-left: none; /* Remove qualquer borda lateral */
+        border-left: none;
         border-right: none;
     }
 
@@ -197,7 +197,7 @@
         margin-bottom: 0.5rem;
     }
 
-    /* Ajusta o alinhamento do texto nas notas do autor */
+    /* Ajusta o alinhamento do texto */
     .author-notes-content {
         text-align: left;
         font-size: 1rem;
@@ -209,28 +209,32 @@
         hyphens: auto;
     }
 
-    /* Ajuste do alinhamento e espaçamento dos poemas */
+    /* Ajuste dos poemas */
     .poem {
         width: 100%;
         margin: 0;
-        padding: 10px 0; /* Remove espaçamento lateral */
+        padding: 0 10px; /* Pequeno padding lateral para não colar na borda */
         box-sizing: border-box;
     }
 
-    /* Ajusta os versos para começarem exatamente na extremidade esquerda */
+    /* Ajuste dos versos */
     .poem-content {
         text-align: left;
         width: 100%;
         margin: 0;
         padding: 0;
-        line-height: 1.7;
+        line-height: 1.8; /* Melhora a legibilidade */
         margin-bottom: 1.2rem;
-        white-space: pre-wrap;
+        white-space: pre-wrap; /* Mantém quebras de linha */
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
-        border-left: none; /* Remove qualquer borda lateral */
-        padding-left: 10px; /* Pequeno espaço para evitar toque na borda */
+    }
+
+    /* Ajuste da fonte para evitar cortes */
+    .poem-content br {
+        display: block;
+        content: "";
     }
 
     /* Ajusta a largura da capa do livro */
