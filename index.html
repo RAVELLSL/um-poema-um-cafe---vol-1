@@ -170,23 +170,21 @@
             padding: 10px;
         }
 
- /* Estilos para telas menores (até 600px) */
 @media (max-width: 600px) {
-    /* Remove margens e padding extras */
+    /* Remove margens, padding e overflow horizontal */
     html, body {
         margin: 0;
         padding: 0;
         overflow-x: hidden;
     }
 
-    /* Ajusta o container para ocupar toda a largura da tela */
+    /* O container principal ocupa toda a largura com leves espaçamentos laterais */
     .container {
         width: 100%;
         margin: 0;
-        padding: 0 10px; /* Adiciona uma margem horizontal leve */
+        padding: 0 10px;
         box-sizing: border-box;
-        border-left: none;
-        border-right: none;
+        border: none;
     }
 
     /* Centraliza os títulos */
@@ -197,7 +195,7 @@
         margin-bottom: 0.5rem;
     }
 
-    /* Ajusta o alinhamento e a formatação do texto nas notas do autor */
+    /* Formatação das notas do autor (mantém alinhamento à esquerda) */
     .author-notes-content {
         text-align: left;
         font-size: 1rem;
@@ -209,25 +207,33 @@
         hyphens: auto;
     }
 
-    /* Ajusta o container de cada poema */
+    /* O container de cada poema ocupa toda a largura disponível */
     .poem {
         width: 100%;
-        margin: 0;
-        padding: 0 10px; /* Pequeno padding lateral para evitar que o conteúdo grude na borda */
+        margin: 0 auto;
+        padding: 0 10px;
         box-sizing: border-box;
     }
 
-    /* Centraliza o texto dos poemas e aumenta o tamanho da fonte */
+    /* Ajusta o conteúdo dos poemas:
+       - Define um max-width para limitar a largura do bloco de texto.
+       - Centraliza o bloco na tela com margin auto.
+       - Remove a borda e o padding à esquerda que eram herdados da versão desktop.
+       - Aumenta um pouco o tamanho da fonte e centraliza o texto */
     .poem-content {
-        text-align: center !important; /* Força a centralização, sobrescrevendo regras anteriores */
-        font-size: 1.3em; /* Ajuste o valor conforme sua preferência */
-        margin: 0 auto;
-        line-height: 1.8; /* Melhora a legibilidade */
+        max-width: 600px;       /* Limita a largura para melhorar a leitura */
+        margin: 0 auto;         /* Centraliza o bloco na tela */
+        text-align: center !important; /* Garante a centralização do texto */
+        font-size: 1.3em;       /* Aumenta o tamanho da fonte */
+        line-height: 1.8;       /* Melhora a legibilidade */
         margin-bottom: 1.2rem;
-        white-space: pre-wrap; /* Mantém as quebras de linha */
+        white-space: pre-wrap;  /* Preserva quebras de linha */
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
+        border-left: none;      /* Remove a borda à esquerda */
+        padding-left: 0;        /* Zera o padding à esquerda */
+        padding-right: 10px;    /* Opcional: adiciona um leve padding à direita */
     }
 
     /* Garante que as quebras de linha (br) sejam renderizadas corretamente */
@@ -245,14 +251,13 @@
         margin: 0 auto;
     }
 
-    /* Ajusta o rodapé */
+    /* Formata o rodapé */
     .footer {
         text-align: center;
         font-size: 0.9rem;
         margin-top: 1.5rem;
     }
 }
-
 
     </style>
 </head>
