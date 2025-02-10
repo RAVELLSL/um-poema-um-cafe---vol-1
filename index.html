@@ -170,25 +170,26 @@
             padding: 10px;
         }
 
-     /* Estilos para telas menores (até 600px) */
+   /* Estilos para telas menores (até 600px) */
 @media (max-width: 600px) {
-    /* Remove rolagem lateral e padding padrão */
+    /* Remove rolagem lateral e padding extra */
     html, body {
         margin: 0;
         padding: 0;
         overflow-x: hidden;
     }
 
-    /* Container ocupa 100% da tela, sem margens extras */
+    /* Ajusta o container para ocupar 100% da largura */
     .container {
         width: 100%;
         margin: 0;
-        padding: 8px;
+        padding: 0;
         box-sizing: border-box;
-        border-left: none; /* Remove qualquer borda lateral indesejada */
+        border-left: none; /* Remove qualquer borda lateral */
+        border-right: none;
     }
 
-    /* Ajusta alinhamento dos títulos e elementos textuais */
+    /* Centraliza os títulos */
     .title,
     .author-notes-title,
     .poem-title {
@@ -196,7 +197,7 @@
         margin-bottom: 0.5rem;
     }
 
-    /* Ajusta o alinhamento do texto das notas do autor */
+    /* Ajusta o alinhamento do texto nas notas do autor */
     .author-notes-content {
         text-align: left;
         font-size: 1rem;
@@ -212,11 +213,11 @@
     .poem {
         width: 100%;
         margin: 0;
-        padding: 10px 8px; /* Mantém padding para evitar toque na borda da tela */
+        padding: 10px 0; /* Remove espaçamento lateral */
         box-sizing: border-box;
     }
 
-    /* Garante que o início do verso fique corretamente alinhado na borda esquerda */
+    /* Ajusta os versos para começarem exatamente na extremidade esquerda */
     .poem-content {
         text-align: left;
         width: 100%;
@@ -228,10 +229,11 @@
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
-        border-left: none; /* Remove a borda lateral para não criar espaçamentos indesejados */
+        border-left: none; /* Remove qualquer borda lateral */
+        padding-left: 10px; /* Pequeno espaço para evitar toque na borda */
     }
 
-    /* Ajusta a largura da capa do livro para melhor visualização */
+    /* Ajusta a largura da capa do livro */
     .book-cover img {
         width: 100%;
         max-width: 300px;
